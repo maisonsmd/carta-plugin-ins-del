@@ -24,15 +24,6 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.2
         version: 3.1.1(svelte@4.2.18)(vite@5.4.0)
-      '@types/hast':
-        specifier: ^3.0.4
-        version: 3.0.4
-      '@types/mdast':
-        specifier: ^4.0.4
-        version: 4.0.4
-      '@types/node-emoji':
-        specifier: ^1.8.2
-        version: 1.8.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.19.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.3.3))(eslint@8.57.0)(typescript@5.3.3)
@@ -435,9 +426,6 @@ packages:
 
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
-
-  '@types/node-emoji@1.8.2':
-    resolution: {integrity: sha512-PfF1qL/9veo8BSHLV84C9ORNr3lHSlnWJ6yU8OdNufoftajeWHTLVbGHvp2B7e7DPDS9gMs6cfeSsqo5rqSitg==}
 
   '@types/pug@2.0.10':
     resolution: {integrity: sha512-Sk/uYFOBAB7mb74XcpizmH0KOR2Pv3D2Hmrh1Dmy5BmK3MpdSa5kqZcg6EKBdklU0bFXX9gCfzvpnyUehrPIuA==}
@@ -2461,8 +2449,6 @@ snapshots:
       '@types/unist': 3.0.2
 
   '@types/ms@0.7.34': {}
-
-  '@types/node-emoji@1.8.2': {}
 
   '@types/pug@2.0.10': {}
 
