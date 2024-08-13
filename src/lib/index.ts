@@ -1,62 +1,43 @@
-import type { CartaExtension } from 'carta-md';
-import type { TokenizerAndRendererExtension } from 'marked';
+import type { Plugin as CartaPlugin } from 'carta-md';
+import remarkIns from 'remark-ins';
 
-export const insdel = (): CartaExtension => {
+export const insdel = (): CartaPlugin => {
 	return {
-		markedExtensions: [
+		transformers: [
 			{
-				extensions: [insTokenizerAndRenderer(), delTokenizerAndRenderer()],
+				execution: 'sync',
+				type: 'remark',
+				transform: ({ processor }) => {
+					processor.use(remarkIns);
+				},
+			},
+		],
+		grammarRules: [
+			{
+				name: 'ins',
+				type: 'inline',
+				definition: {
+					match: '\\+{2}[^+]+?\\+{2}',
+					name: 'markup.ins.markdown',
+				},
+			},
+			// Carta already have highlight for del, so we don't need to add it here
+		],
+		highlightingRules: [
+			{
+				light: {
+					scope: 'markup.ins',
+					settings: {
+						foreground: '#1fa81f',
+					},
+				},
+				dark: {
+					scope: 'markup.ins',
+					settings: {
+						foreground: '#1fa81f',
+					},
+				},
 			},
 		],
 	};
 };
-
-function insTokenizerAndRenderer(): TokenizerAndRendererExtension {
-	return {
-		name: 'ins',
-		level: 'inline',
-		start(src) {
-			return src.match(/\+\+(.+?)\+\+/)?.index;
-		},
-		tokenizer(src) {
-			const match = src.match(/^\+\+(.+?)\+\+/);
-
-			if (!match) return undefined;
-
-			return {
-				type: 'ins',
-				raw: match[0],
-				text: match[1],
-			};
-		},
-
-		renderer(token) {
-			return `<ins>${token.text}</ins>`;
-		},
-	};
-}
-
-function delTokenizerAndRenderer(): TokenizerAndRendererExtension {
-	return {
-		name: 'del',
-		level: 'inline',
-		start(src) {
-			return src.match(/--(.+?)--/)?.index;
-		},
-		tokenizer(src) {
-			const match = src.match(/^--(.+?)--/);
-
-			if (!match) return undefined;
-
-			return {
-				type: 'del',
-				raw: match[0],
-				text: match[1],
-			};
-		},
-
-		renderer(token) {
-			return `<del>${token.text}</del>`;
-		},
-	};
-}

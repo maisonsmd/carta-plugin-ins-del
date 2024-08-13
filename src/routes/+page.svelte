@@ -6,9 +6,10 @@
 
 	const carta = new Carta({
 		extensions: [insdel()],
+		sanitizer: false,
 	});
 
-	let value = `There is --nothing-- ++no code++ either good or bad, but --thinking-- ++running it++ makes it so.`;
+	let value = `There is ~~nothing~~ ++no code++ either good or bad, but ~~thinking~~ ++running it++ makes it so.`;
 </script>
 
 <svelte:head>
@@ -45,6 +46,7 @@
 	:global(.carta-font-code, code) {
 		font-family: 'Fira Code', monospace;
 		font-variant-ligatures: normal;
+		font-size: 0.95rem;
 	}
 
 	:global(input, textarea, button) {

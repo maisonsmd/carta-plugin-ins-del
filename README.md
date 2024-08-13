@@ -4,6 +4,12 @@
 
 `<ins>` and `<del>` tags support for [Carta](https://github.com/BearToCode/carta).
 
+## Breaking changes in v2
+
+- Update to support Carta v4
+- Now this plugin is just a wrapper for [remark-ins](https://github.com/ipikuka/remark-ins)
+- For del tag, use double tilde `~~` instead of double hyphen `--` to align with the rest of the markdown parsers
+
 ## Installation
 
 ```shell
@@ -50,7 +56,7 @@ Example custom styles:
 This snippet:
 
 ```
-There is --nothing-- ++no code++ either good or bad, but --thinking-- ++running it++ makes it so.
+There is ~~nothing~~ ++no code++ either good or bad, but ~~thinking~~ ++running it++ makes it so.
 ```
 
 will generate this output:
